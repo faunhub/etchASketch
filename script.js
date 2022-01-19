@@ -8,6 +8,10 @@ function createDrawingPad(size){
     }
     let numberOfColumns = 640/width;
     container.style.gridTemplateColumns = `repeat(${size},${numberOfColumns}px)`;
+    makeDraw();
+}
+
+function makeDraw(){
     let pixelCollection = container.childNodes;
     pixelCollection.forEach(pixel => pixel.addEventListener('mouseover', 
     (pixel) => pixel.target.classList.add('grid-item-hover')));
@@ -24,12 +28,15 @@ function resetPad(){
     createDrawingPad(slider.value);
 }
 
+
 const container = document.querySelector('.grid-container');
 const slider = document.querySelector('.slider');
 const reset = document.querySelector('.resetButton');
 const sizeDisplay = document.querySelector('.size-display');
 
-createDrawingPad(64);
+createDrawingPad(32);
 sizeDisplay.innerText = slider.value;
 slider.addEventListener('change', changeSize);
 reset.addEventListener('click', resetPad);
+
+
