@@ -19,9 +19,9 @@ function changeSize(){
     createDrawingPad(slider.value);
 }
 
-function resetSize(){
-    container.innerHTML = "";s
-    createDrawingPad(64);
+function resetPad(){
+    container.innerHTML = "";
+    createDrawingPad(slider.value);
 }
 
 const container = document.querySelector('.grid-container');
@@ -32,4 +32,4 @@ const sizeDisplay = document.querySelector('.size-display');
 createDrawingPad(64);
 sizeDisplay.innerText = slider.value;
 slider.addEventListener('change', changeSize);
-reset.addEventListener('click', resetSize);
+reset.addEventListener('click', resetPad);
