@@ -1,27 +1,35 @@
-const container = document.querySelector('.grid-container');
-
 function createDrawingPad(size){
     let width =size;
-    let height =width;
+    let height =size;
     for (let i =1; i<=width*height;i++){
         const square = document.createElement('div');
         square.classList.add('grid-item');
         container.appendChild(square);
     }
-    let squareSize = 640/width;
-    container.style.gridTemplateColumns = `repeat(${width},${squareSize}px)`;
+    let numberOfColumns = 640/width;
+    container.style.gridTemplateColumns = `repeat(${size},${numberOfColumns}px)`;
+    let pixelCollection = container.childNodes;
+    pixelCollection.forEach(pixel => pixel.addEventListener('mouseover', 
+    (pixel) => pixel.target.classList.add('grid-item-hover')));
 }
 
+function changeSize(){
+    container.innerHTML = "";
+    sizeDisplay.innerText = slider.value;
+    createDrawingPad(slider.value);
+}
+
+function resetSize(){
+    container.innerHTML = "";s
+    createDrawingPad(64);
+}
+
+const container = document.querySelector('.grid-container');
+const slider = document.querySelector('.slider');
+const reset = document.querySelector('.resetButton');
+const sizeDisplay = document.querySelector('.size-display');
+
 createDrawingPad(64);
-
-let pixelCollection = container.childNodes;
-pixelCollection.forEach(pixel => pixel.addEventListener('mouseover', (pixel) => pixel.target.classList.add('grid-item-hover')));
-
-let slider = document.querySelector('.slider');
-// slider.addEventListener('change', changeSize);
-
-// function changeSize(){
-//     const size = slider.value;
-//     console.log(size);
-//     createDrawingPad(size);
-// }
+sizeDisplay.innerText = slider.value;
+slider.addEventListener('change', changeSize);
+reset.addEventListener('click', resetSize);
