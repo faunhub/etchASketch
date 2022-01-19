@@ -11,12 +11,13 @@ body {
     width: 640px;
     height: 640px;
     justify-content: center;
+    border: 10px solid black;
 }
 
 .grid-item {
     background-color: brown;
 }
-.grid-item:hover {
+.grid-item-hover {
     background-color: black;
 }
 
