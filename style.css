@@ -34,11 +34,21 @@ body {
     flex-direction: column;
     align-items:flex-end;
 }
-.colorPicker{
+.colorPicker {
     border: 10px solid black;
     border-radius: 15px;
     width: 50px;
     height: 50px;
+}
+.rainbow {
+    border: 10px solid black;
+    border-radius: 15px;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    padding: 10px;
+    background-color: rgb(60, 142, 186);
+}
+.rainbow:hover {
+    background-color: rgb(205, 70, 70);
 }
 .size-display {
     background-color: rgb(60, 142, 186);

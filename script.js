@@ -16,6 +16,20 @@ function makeDraw(color){
     (pixel) => pixel.target.style.backgroundColor =color));
 }
 
+function getrandomColor(){
+    const hexValues = '0123456789ABCDEF';
+    let randomColor = '#';
+    for (let i=0; i<6;i++){
+        randomColor+= hexValues[Math.floor(Math.random()*16)];
+    }
+    return randomColor;
+}
+
+function makeDrawRainbow(){
+    pixelCollection.forEach(pixel => pixel.addEventListener('mouseover', 
+    (pixel) => pixel.target.style.backgroundColor =getrandomColor()));
+}
+
 function changeSize(){
     container.innerHTML = "";
     sizeDisplay.innerText = slider.value;
@@ -35,11 +49,13 @@ const slider = document.querySelector('.slider');
 const reset = document.querySelector('.resetButton');
 const sizeDisplay = document.querySelector('.size-display');
 const colorPicker = document.querySelector('.colorPicker');
+const randomColor = document.querySelector('.rainbow');
 
 createDrawingPad(32);
 sizeDisplay.innerText = slider.value;
 slider.addEventListener('change', changeSize);
 reset.addEventListener('click', resetPad);
 colorPicker.addEventListener('change', () => makeDraw(colorPicker.value));
+randomColor.addEventListener('click', makeDrawRainbow);
 
 
