@@ -8,10 +8,10 @@ function createDrawingPad(size){
     }
     let numberOfColumns = 640/width;
     container.style.gridTemplateColumns = `repeat(${size},${numberOfColumns}px)`;
-    makeDraw("#000000");
+    makeDrawer("#000000");
 }
 
-function makeDraw(color){
+function makeDrawer(color){
     pixelCollection.forEach(pixel => pixel.addEventListener('mouseover', 
     (pixel) => pixel.target.style.backgroundColor =color));
 }
@@ -25,7 +25,7 @@ function getrandomColor(){
     return randomColor;
 }
 
-function makeDrawRainbow(){
+function makeDrawerRainbow(){
     pixelCollection.forEach(pixel => pixel.addEventListener('mouseover', 
     (pixel) => pixel.target.style.backgroundColor =getrandomColor()));
 }
@@ -55,7 +55,7 @@ createDrawingPad(32);
 sizeDisplay.innerText = slider.value;
 slider.addEventListener('change', changeSize);
 reset.addEventListener('click', resetPad);
-colorPicker.addEventListener('change', () => makeDraw(colorPicker.value));
-randomColor.addEventListener('click', makeDrawRainbow);
+colorPicker.addEventListener('change', () => makeDrawer(colorPicker.value));
+randomColor.addEventListener('click', makeDrawerRainbow);
 
 
